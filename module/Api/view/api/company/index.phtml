@@ -1,0 +1,25 @@
+<?php
+
+$title = 'Companies';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('api', ['action' => 'add']) ?>">Add new company</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($data as $company) : ?>
+        <tr>
+            <td><?= $this->escapeHtml($company->name) ?></td>
+            <td>
+                <a href="<?= $this->url('api', ['action' => 'edit', 'id' => $company->companyId]) ?>">Edit</a>
+                <a href="<?= $this->url('api', ['action' => 'delete', 'id' => $company->companyId]) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
